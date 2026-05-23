@@ -1,5 +1,6 @@
 export default async function handler(req, res) {
-  const targetPath = req.query.target || [];
+  const { _target, ...cleanParams } = req.query;
+  const targetPath = _target || [];
   const targetUrl = targetPath.join('/');
 
   if (!targetUrl || !targetUrl.startsWith('http')) {

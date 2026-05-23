@@ -4,5 +4,8 @@
     "api/**/*.js": {
       "regions": ["hnd1"]
     }
-  }
+  },
+  "rewrites": [
+    {"source": "/api/proxy/:path*", "destination": "/api/proxy?_target=:path*"}
+  ]
 }
