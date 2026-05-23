@@ -1,8 +1,9 @@
 export default async function handler(req, res) {
-  const targetUrl = req.query.url;
+  const targetPath = req.query.target || [];
+  const targetUrl = targetPath.join('/');
 
-  if (!targetUrl) {
-    return res.status(400).send("Missing ?url= parameter");
+  if (!targetUrl || !targetUrl.startsWith('http')) {
+    return res.status(400).send("Invalid target URL. 使用例: /api/proxy/https://example.com");
   }
 
   try {
